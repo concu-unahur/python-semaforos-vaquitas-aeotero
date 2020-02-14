@@ -6,6 +6,8 @@ import threading
 inicioPuente = 10
 largoPuente = 20
 
+sem = threading.Semaphore(1) # semaforo pra que vallan de a 1
+
 class Vaca(threading.Thread):
   def __init__(self):
     super().__init__()
@@ -24,8 +26,8 @@ class Vaca(threading.Thread):
       self.avanzar()
 
 vacas = []
-for i in range(5):
-  v = Vaca()
+for i in range(5): #las vacas se deben detener en 10 y pasar de a 1 hata la posicion 30 , ahi larga a 
+  v = Vaca()       # la otra vaca que agarro el acquire
   vacas.append(v)
   v.start()
 
